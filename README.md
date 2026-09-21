@@ -25,7 +25,7 @@
 터미널에서 이 폴더로 이동한 뒤:
 
 ```bash
-cd ~/Desktop/seoularts-digital-art
+cd ~/Desktop/02_코드/seoularts-digital-art
 npx vercel login
 npx vercel --prod
 ```
