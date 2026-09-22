@@ -203,10 +203,10 @@
   .brand-text{display:flex;flex-direction:column;gap:2px;line-height:1.1}
   .brand-text small{font:var(--weight-core) 11px/1.1 var(--font-core);letter-spacing:0.04em;word-spacing:-0.05em;text-transform:uppercase;color:var(--text-muted)}
   .brand-text strong{font:600 19px/1.1 var(--font-core);letter-spacing:0.01em;word-spacing:-0.03em}
-  .site-nav{display:flex;gap:var(--space-32)}
+  .site-nav{display:flex;gap:var(--space-28)}
   /* FIX: 네비 active 언더라인 인디케이터 + 클릭 타겟 */
-  .site-nav a{font:var(--type-label);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted);padding:4px 0;position:relative}
-  .site-nav a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--text-body);transform:scaleX(0);transform-origin:left;transition:transform var(--duration-base) var(--ease-out)}
+  .site-nav a{font:var(--weight-core) 13px/1.2 var(--font-core);letter-spacing:0.04em;color:var(--text-muted);padding:6px 0;position:relative}
+  .site-nav a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1.5px;background:var(--text-body);transform:scaleX(0);transform-origin:left;transition:transform var(--duration-base) var(--ease-out)}
   .site-nav a:hover,.site-nav a.is-active{color:var(--text-body)}
   .site-nav a.is-active::after{transform:scaleX(1)}
   /* FIX: progress 클릭 타겟 44px */
@@ -388,7 +388,7 @@
     .brand>span:not(.mark){display:flex}
     .subnav{display:flex;gap:var(--space-20);height:36px;align-items:center;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;white-space:nowrap;border-top:1px solid var(--border-hairline)}
     .subnav::-webkit-scrollbar{display:none}
-    .subnav a{font:var(--type-label);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted);flex:none;padding:6px 0;border-bottom:1px solid transparent}
+    .subnav a{font:var(--weight-core) 12px/1.2 var(--font-core);letter-spacing:0.03em;color:var(--text-muted);flex:none;padding:6px 0;border-bottom:1.5px solid transparent}
     .subnav a.is-active{color:var(--text-body);border-bottom-color:var(--text-body)}
     .site-header .btn.sm{min-height:36px}
     :root{--hdr:88px}
