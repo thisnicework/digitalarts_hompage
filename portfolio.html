@@ -46,6 +46,130 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .navlink{font:500 var(--text-12)/1.2 var(--font);text-transform:uppercase;letter-spacing:var(--track-caps);color:var(--text-body);opacity:.55;transition:var(--transition-link)}
 .navlink:hover,.navlink.is-active{opacity:1;color:var(--text-body)}
 
+
+/* ═══ Tactical Art-School Cursor ═══ */
+@media (hover: hover) and (pointer: fine) {
+  body, a, button, input, select, textarea, .tile, .row-item, .grid-card, .archive-row { cursor: none !important; }
+  #tactical-cursor {
+    position: fixed; top: 0; left: 0; z-index: 99999;
+    pointer-events: none; will-change: transform;
+    mix-blend-mode: difference;
+  }
+  .t-dot {
+    width: 5px; height: 5px; background: #fff; border-radius: 50%;
+    position: absolute; transform: translate(-50%, -50%);
+    transition: transform 0.12s ease;
+  }
+  .t-ring {
+    width: 26px; height: 26px; border: 1px solid rgba(255,255,255,0.7);
+    position: absolute; transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1), height 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, border-radius 0.2s ease;
+  }
+  .t-badge {
+    position: absolute; left: 16px; top: -11px;
+    font: 600 9px/1 'Pretendard', monospace;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: #fff; background: rgba(0,0,0,0.9); padding: 3px 6px;
+    border: 1px solid rgba(255,255,255,0.35);
+    white-space: nowrap; opacity: 0; transform: translateY(4px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  #tactical-cursor.is-hover .t-ring {
+    width: 48px; height: 48px; border-color: #fff;
+    border-radius: 4px;
+  }
+  #tactical-cursor.is-hover .t-dot { transform: translate(-50%, -50%) scale(1.6); }
+  #tactical-cursor.has-badge .t-badge { opacity: 1; transform: translateY(0); }
+}
+@media (hover: none), (pointer: coarse) {
+  #tactical-cursor { display: none !important; }
+}
+
+/* ═══ Multi-View Switcher & Exhibition Archive ═══ */
+.works-toolbar {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 20px; flex-wrap: wrap; margin-top: var(--space-40); margin-bottom: var(--space-20);
+  border-bottom: var(--hairline) solid var(--border-hairline); padding-bottom: 14px;
+}
+.works-toolbar .filters { margin: 0; gap: 16px; }
+.view-switch { display: flex; gap: 8px; align-items: center; }
+.v-btn {
+  font: 500 var(--text-10)/1 var(--font); text-transform: uppercase; letter-spacing: var(--track-caps-wide);
+  padding: 6px 10px; border: var(--hairline) solid var(--border-hairline); color: var(--text-muted);
+  background: transparent; transition: var(--transition-link);
+}
+.v-btn.is-active, .v-btn:hover { color: var(--bone); border-color: var(--bone); }
+
+/* Table View */
+.archive-table-wrap { width: 100%; overflow-x: auto; margin-top: var(--space-20); position: relative; }
+.archive-table { width: 100%; border-collapse: collapse; text-align: left; }
+.archive-table th {
+  font: 500 var(--text-10)/1 var(--font); letter-spacing: var(--track-caps-wide);
+  text-transform: uppercase; color: var(--text-muted); padding: 12px 16px;
+  border-bottom: var(--hairline) solid var(--border-hairline);
+}
+.archive-row {
+  border-bottom: var(--hairline) solid var(--border-faint);
+  transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.archive-row:hover { background: rgba(233,234,228,0.06); }
+.archive-row td {
+  padding: 16px; font-size: var(--text-12); vertical-align: middle;
+}
+.archive-row .td-id { font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: var(--text-10); letter-spacing: 0.1em; width: 60px; }
+.archive-row .td-title a {
+  font: 500 var(--text-16)/1.3 var(--font); letter-spacing: 0.02em; color: var(--text-body);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.archive-row:hover .td-title a { color: #fff; }
+.archive-row .td-artist { color: var(--text-meta); font-size: var(--text-12); white-space: nowrap; }
+.archive-row .td-disc { text-transform: uppercase; font-size: var(--text-10); letter-spacing: var(--track-caps); color: var(--text-muted); }
+.archive-row .td-disc span { display: inline-block; padding: 2px 6px; border: 1px solid var(--border-hairline); border-radius: 2px; }
+.archive-row .td-year { color: var(--text-muted); font-variant-numeric: tabular-nums; font-size: var(--text-10); width: 60px; }
+.archive-row .td-tools { color: var(--text-muted); font-size: var(--text-10); letter-spacing: 0.04em; max-width: 240px; }
+
+/* Floating Cursor Thumbnail */
+.float-thumb {
+  position: fixed; width: 260px; pointer-events: none; z-index: 900;
+  border: 1px solid var(--bone-24); background: #000; box-shadow: 0 16px 36px rgba(0,0,0,0.8);
+  opacity: 0; transform: scale(0.96) translate3d(0, 8px, 0);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.float-thumb.is-on { opacity: 1; transform: scale(1) translate3d(0, 0, 0); }
+.float-thumb .ft-media { width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #000; }
+.float-thumb .ft-media canvas, .float-thumb .ft-media img, .float-thumb .ft-media video { width: 100%; height: 100%; object-fit: cover; }
+.float-thumb .ft-cap { padding: 8px 10px; display: flex; justify-content: space-between; font: 500 9px/1.2 var(--font); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-meta); border-top: 1px solid var(--border-faint); }
+
+/* Media Grid View */
+.media-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: var(--space-40);
+}
+.grid-card {
+  display: flex; flex-direction: column; gap: 12px; border: var(--hairline) solid var(--border-hairline);
+  padding: 16px; background: rgba(233,234,228,0.02); text-decoration: none; color: var(--text-body);
+  transition: border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.grid-card:hover {
+  border-color: var(--bone); background: rgba(233,234,228,0.08); transform: translateY(-2px);
+}
+.grid-card .gc-media { width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #000; border: 1px solid var(--border-faint); }
+.grid-card .gc-media canvas, .grid-card .gc-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
+.grid-card:hover .gc-media canvas, .grid-card:hover .gc-media img { transform: scale(1.03); }
+.grid-card .gc-info { display: flex; flex-direction: column; gap: 6px; }
+.grid-card .gc-meta { display: flex; justify-content: space-between; font: 500 var(--text-10)/1 var(--font); letter-spacing: var(--track-caps-wide); text-transform: uppercase; color: var(--text-muted); }
+.grid-card .gc-title { font: 500 var(--text-16)/1.3 var(--font); margin: 0; letter-spacing: 0.02em; }
+.grid-card .gc-student { font-size: var(--text-12); color: var(--text-meta); }
+
+@media (max-width: 900px) {
+  .media-grid { grid-template-columns: repeat(2, 1fr); }
+  .archive-table .th-tools, .archive-table .td-tools, .archive-table .th-year, .archive-table .td-year { display: none; }
+}
+@media (max-width: 600px) {
+  .media-grid { grid-template-columns: 1fr; }
+  .archive-table .th-disc, .archive-table .td-disc { display: none; }
+}
+
 /* ── 진입 로더 ── */
 .entry{position:fixed;inset:0;z-index:var(--z-overlay);background:var(--black);display:grid;align-content:space-between;padding:var(--pm);transition:opacity var(--dur-slow) var(--ease)}
 .entry.is-done{opacity:0;pointer-events:none}
@@ -181,6 +305,8 @@ main{min-height:60vh}
   <div class="row"><span class="micro">loading data</span><span class="pct" id="pct">0%</span></div>
 </div>
 
+<div id="tactical-cursor" aria-hidden="true"><div class="t-dot"></div><div class="t-ring"></div><div class="t-badge" id="cursor-badge"></div></div>
+
 <header class="hdr">
   <a class="brand" href="index.html" aria-label="전공 홈페이지로"><span class="mark"><svg><use href="#logo"/></svg></span><span class="word">Digital Arts</span></a>
   <div class="center"><a href="#/works" data-route="works">/works</a></div>
@@ -304,21 +430,106 @@ main{min-height:60vh}
   window.addEventListener('touchmove', function(e){ if (!document.body.classList.contains('is-home') || tY === null) return; var t = e.touches[0]; var dy = tY - t.clientY, dx = tX - t.clientX; tY = t.clientY; tX = t.clientX; e.preventDefault(); push((dy + dx) * 0.014); }, { passive: false });
   window.addEventListener('touchend', function(){ tY = null; }, { passive: true });
 
-  /* ── works: 큰 프레임 세로 스택 ── */
+  /* ── works: 멀티뷰 아카이브 (테이블 인덱스 vs 미디어 그리드) ── */
+  var currentView = localStorage.getItem('da-pf-view') || 'index';
   function Works(filter){
     cancelAnimationFrame(raf); document.body.classList.remove('is-home');
     filter = filter || 'all';
     var metas = ['all'].concat(D.works.map(function(w){ return w.meta; }).filter(function(m, i, a){ return a.indexOf(m) === i; }));
     var list = D.works.filter(function(w){ return filter === 'all' || w.meta === filter; });
-    app.innerHTML = '<section class="page"><h1 class="display" style="max-width:30ch">' + esc((D.statement || []).join(' ')) + '</h1>' +
-      '<p class="micro" style="margin:12px 0 0"><a href="submit.html" style="border-bottom:1px solid var(--border-hairline)">학생 작품 게시하기 ↗</a></p>' +
+
+    var viewControls = '<div class="view-switch">' +
+      '<button type="button" class="v-btn ' + (currentView === 'index' ? 'is-active' : '') + '" data-view="index">/ TABLE INDEX</button>' +
+      '<button type="button" class="v-btn ' + (currentView === 'grid' ? 'is-active' : '') + '" data-view="grid">/ MEDIA GRID</button>' +
+      '</div>';
+
+    var toolbar = '<div class="works-toolbar">' +
       '<div class="filters">' + metas.map(function(m){ return '<a class="' + (m === filter ? 'is-active' : '') + '" href="#/works/' + m + '">' + m + '</a>'; }).join('') + '</div>' +
-      '<div class="works-grid"><div class="rows" id="rows">' + list.map(rowItem).join('') + (list.length ? '' : '<p class="body">이 분야의 작품이 아직 없습니다.</p>') + '</div><div class="preview" id="preview"></div></div></section>' + footer();
-    var pv = document.getElementById('preview');
-    Array.prototype.forEach.call(document.querySelectorAll('#rows .row-item'), function(a){
-      a.addEventListener('mouseenter', function(){ var w = D.works.filter(function(x){ return '#/work/' + x.slug === a.getAttribute('href'); })[0]; if (!w) return; pv.innerHTML = ''; pv.appendChild(frame(w, 'r45', w.title, w.n)); pv.classList.add('is-on'); });
-      a.addEventListener('mouseleave', function(){ pv.classList.remove('is-on'); });
+      viewControls +
+      '</div>';
+
+    var bodyContent = '';
+    if (currentView === 'index') {
+      bodyContent = '<div class="archive-table-wrap">' +
+        '<table class="archive-table">' +
+        '<thead><tr><th class="th-id">NO.</th><th class="th-title">TITLE</th><th class="th-artist">ARTIST</th><th class="th-disc">DISCIPLINE</th><th class="th-year">YEAR</th><th class="th-tools">TOOLS / MEDIA</th></tr></thead>' +
+        '<tbody>' + list.map(function(w){
+          return '<tr class="archive-row" data-slug="' + w.slug + '" data-cursor="VIEW // ' + w.n + '">' +
+            '<td class="td-id">' + w.n + '</td>' +
+            '<td class="td-title"><a href="#/work/' + w.slug + '">' + esc(w.title) + ' ↗</a></td>' +
+            '<td class="td-artist">' + esc(w.student) + '</td>' +
+            '<td class="td-disc"><span>' + w.meta + '</span></td>' +
+            '<td class="td-year">' + esc(w.year || '2024') + '</td>' +
+            '<td class="td-tools">' + esc((w.tools || []).join(' · ') || 'Interactive Media') + '</td>' +
+            '</tr>';
+        }).join('') + '</tbody></table>' +
+        '<div id="float-thumb" class="float-thumb"><div class="ft-media" id="ft-media"></div><div class="ft-cap" id="ft-cap"></div></div>' +
+        '</div>';
+    } else {
+      bodyContent = '<div class="media-grid">' + list.map(function(w){
+        return '<a class="grid-card" href="#/work/' + w.slug + '" data-cursor="VIEW // ' + w.n + '">' +
+          '<div class="gc-media" data-slug="' + w.slug + '"></div>' +
+          '<div class="gc-info">' +
+          '<div class="gc-meta"><span>' + w.n + '</span><span>' + w.meta + '</span></div>' +
+          '<h3 class="gc-title">' + esc(w.title) + '</h3>' +
+          '<span class="gc-student">' + esc(w.student) + ' · ' + esc(w.year || '2024') + '</span>' +
+          '</div></a>';
+      }).join('') + '</div>';
+    }
+
+    app.innerHTML = '<section class="page"><h1 class="display" style="max-width:32ch">' + esc((D.statement || []).join(' ')) + '</h1>' +
+      '<p class="micro" style="margin:12px 0 0"><a href="submit.html" style="border-bottom:1px solid var(--border-hairline)">학생 작품 게시하기 ↗</a></p>' +
+      toolbar +
+      bodyContent +
+      '</section>' + footer();
+
+    /* 뷰 전환 버튼 이벤트 */
+    Array.prototype.forEach.call(document.querySelectorAll('.v-btn'), function(b){
+      b.addEventListener('click', function(){
+        currentView = b.getAttribute('data-view');
+        localStorage.setItem('da-pf-view', currentView);
+        Works(filter);
+      });
     });
+
+    /* 그리드 뷰 미디어 주입 */
+    if (currentView === 'grid') {
+      Array.prototype.forEach.call(document.querySelectorAll('.gc-media'), function(box){
+        var sl = box.getAttribute('data-slug');
+        var w = D.works.filter(function(x){ return x.slug === sl; })[0];
+        if (w) box.appendChild(media(w, 480, 300));
+      });
+    }
+
+    /* 테이블 뷰 플로팅 썸네일 추적 */
+    if (currentView === 'index') {
+      var ft = document.getElementById('float-thumb'), ftMedia = document.getElementById('ft-media'), ftCap = document.getElementById('ft-cap');
+      var fmx = 0, fmy = 0, curRow = null;
+      window.addEventListener('mousemove', function(e){
+        fmx = e.clientX + 24;
+        fmy = e.clientY - 90;
+        if (ft && ft.classList.contains('is-on')) {
+          ft.style.left = Math.min(window.innerWidth - 280, fmx) + 'px';
+          ft.style.top = Math.max(80, Math.min(window.innerHeight - 200, fmy)) + 'px';
+        }
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('.archive-row'), function(r){
+        r.addEventListener('mouseenter', function(e){
+          var sl = r.getAttribute('data-slug');
+          var w = D.works.filter(function(x){ return x.slug === sl; })[0];
+          if (!w) return;
+          ftMedia.innerHTML = '';
+          ftMedia.appendChild(media(w, 260, 160));
+          ftCap.innerHTML = '<span>' + esc(w.title) + '</span><span>' + esc(w.student) + '</span>';
+          ft.classList.add('is-on');
+          ft.style.left = Math.min(window.innerWidth - 280, e.clientX + 24) + 'px';
+          ft.style.top = Math.max(80, Math.min(window.innerHeight - 200, e.clientY - 90)) + 'px';
+        });
+        r.addEventListener('mouseleave', function(){
+          if (ft) ft.classList.remove('is-on');
+        });
+      });
+    }
   }
 
   /* ── 상세 ── */
@@ -379,6 +590,35 @@ main{min-height:60vh}
       fetch(base + 'site?select=key,value', { headers: h }).then(function(r){ return r.ok ? r.json() : []; })
     ]).then(function(res){ clearTimeout(late); applyRemote(res[0], res[1]); if (started) route(); else start(); }, start);
   }
+    /* Tactical Cursor & Text Scramble in Portfolio */
+  var cur = document.getElementById('tactical-cursor'), badge = document.getElementById('cursor-badge');
+  if (cur && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var mx = -100, my = -100, cx = -100, cy = -100;
+    window.addEventListener('mousemove', function(e){ mx = e.clientX; my = e.clientY; });
+    (function cLoop(){
+      cx += (mx - cx) * 0.22; cy += (my - cy) * 0.22;
+      cur.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
+      requestAnimationFrame(cLoop);
+    })();
+    var hTargets = 'a, button, [data-cursor], .tile, .archive-row, .grid-card, .btn';
+    document.addEventListener('mouseover', function(e){
+      var t = e.target.closest ? e.target.closest(hTargets) : null;
+      if (t) {
+        cur.classList.add('is-hover');
+        var text = t.getAttribute('data-cursor') || (t.tagName === 'A' ? 'OPEN' : (t.tagName === 'BUTTON' ? 'SELECT' : 'VIEW'));
+        badge.textContent = text;
+        cur.classList.add('has-badge');
+      }
+    });
+    document.addEventListener('mouseout', function(e){
+      var t = e.target.closest ? e.target.closest(hTargets) : null;
+      if (t) {
+        cur.classList.remove('is-hover');
+        cur.classList.remove('has-badge');
+      }
+    });
+  }
+
   loadRemote(function(){ window.addEventListener('hashchange', route); route(); });
 
   /* ── 진입: 퍼센트 카운터 → 페이드 (세션당 한 번) ── */

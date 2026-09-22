@@ -261,6 +261,94 @@
   .center .kicker{justify-content:center;margin-bottom:var(--space-8)}
   .center .h2{max-width:22ch;margin-inline:auto}
   .center .lead{margin-inline:auto;max-width:44ch}
+    /* === Tactical Art-School Cursor === */
+  @media (hover: hover) and (pointer: fine) {
+    body, a, button, input, select, textarea, .card, .showcase-hero, .showcase-sub, .matrix-row { cursor: none !important; }
+    #tactical-cursor {
+      position: fixed; top: 0; left: 0; z-index: 99999;
+      pointer-events: none; will-change: transform;
+      mix-blend-mode: difference;
+    }
+    .t-dot {
+      width: 5px; height: 5px; background: #fff; border-radius: 50%;
+      position: absolute; transform: translate(-50%, -50%);
+      transition: transform 0.12s ease;
+    }
+    .t-ring {
+      width: 26px; height: 26px; border: 1px solid rgba(255,255,255,0.7);
+      position: absolute; transform: translate(-50%, -50%);
+      border-radius: 50%;
+      transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1), height 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, border-radius 0.2s ease;
+    }
+    .t-badge {
+      position: absolute; left: 16px; top: -11px;
+      font: 600 9px/1 'Pretendard', monospace;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: #fff; background: rgba(0,0,0,0.88); padding: 3px 6px;
+      border: 1px solid rgba(255,255,255,0.35);
+      white-space: nowrap; opacity: 0; transform: translateY(4px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+    #tactical-cursor.is-hover .t-ring {
+      width: 48px; height: 48px; border-color: #fff;
+      border-radius: 4px;
+    }
+    #tactical-cursor.is-hover .t-dot { transform: translate(-50%, -50%) scale(1.6); }
+    #tactical-cursor.has-badge .t-badge { opacity: 1; transform: translateY(0); }
+  }
+  @media (hover: none), (pointer: coarse) {
+    #tactical-cursor { display: none !important; }
+  }
+
+  /* === Architectural Trajectories Ledger (Ch03) === */
+  .matrix-ledger{display:flex;flex-direction:column;width:100%;border-top:1px solid var(--border-strong);margin-top:var(--space-12);text-align:left}
+  .matrix-row{display:grid;grid-template-columns:120px 1.4fr 1fr;align-items:center;gap:var(--space-20);padding:var(--space-16) var(--space-12);border-bottom:1px solid var(--border-hairline);transition:background-color var(--duration-fast) var(--ease),opacity var(--duration-fast) var(--ease);position:relative}
+  .matrix-row:hover{background:var(--surface-muted);opacity:1}
+  .matrix-ledger:hover .matrix-row:not(:hover){opacity:0.55}
+  .matrix-row .m-idx{font:var(--weight-core) var(--text-label)/1 var(--font-label);letter-spacing:var(--tracking-label);color:var(--text-muted);display:flex;align-items:center;gap:8px}
+  .matrix-row .m-idx::before{content:'';width:4px;height:4px;background:currentColor;display:inline-block}
+  .matrix-row:hover .m-idx{color:var(--text-body)}
+  .matrix-row .m-title{font:var(--weight-core) clamp(13px,1.1vw,16px)/1.35 var(--font-core);margin:0;color:var(--text-body)}
+  .matrix-row .m-desc{font:var(--type-body);font-size:12px;color:var(--text-secondary);margin:4px 0 0;line-height:1.4}
+  .matrix-row .m-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+  .matrix-row .m-tags span{font:var(--weight-core) 10px/1.2 var(--font-label);letter-spacing:0.08em;padding:4px 8px;border:1px solid var(--border-hairline);border-radius:2px;color:var(--text-muted);text-transform:uppercase}
+  .matrix-row:hover .m-tags span{border-color:var(--text-body);color:var(--text-body)}
+  @media(max-width:860px){
+    .matrix-row{grid-template-columns:1fr;gap:var(--space-8);padding:var(--space-12) 0}
+    .matrix-row .m-tags{justify-content:flex-start}
+  }
+
+  /* === Asymmetric Exhibition Showcase (Ch04) === */
+  .showcase-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:var(--gutter);width:100%;align-items:stretch;text-align:left}
+  .showcase-hero{display:flex;flex-direction:column;gap:var(--space-12);padding:var(--space-20);border:1px solid var(--border-hairline);background:var(--surface-card);color:var(--text-body);text-decoration:none;position:relative;transition:border-color var(--duration-base) var(--ease),background-color var(--duration-base) var(--ease),transform var(--duration-base) var(--ease-out)}
+  .cs-inverse .showcase-hero{background:rgba(238,238,240,0.06);border-color:rgba(243,243,243,0.18)}
+  .showcase-hero:hover{border-color:var(--accent);background:var(--surface-warm);transform:translateY(-2px)}
+  .cs-inverse .showcase-hero:hover{background:rgba(238,238,240,0.12);border-color:var(--accent)}
+  .showcase-hero .hero-media{width:100%;aspect-ratio:16/10;overflow:hidden;background:#000;border:1px solid var(--border-hairline);position:relative}
+  .showcase-hero .hero-media canvas{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease}
+  .showcase-hero:hover .hero-media canvas{transform:scale(1.03)}
+  .showcase-hero .hero-meta{display:flex;justify-content:space-between;align-items:baseline;font:var(--type-label);letter-spacing:var(--tracking-label);color:var(--text-muted);text-transform:uppercase}
+  .showcase-hero .hero-meta .badge{display:inline-flex;align-items:center;gap:6px}
+  .showcase-hero .hero-meta .badge::before{content:'';width:6px;height:6px;background:var(--accent);display:inline-block}
+  .showcase-hero .hero-title{font:var(--weight-core) clamp(18px,2vw,26px)/1.2 var(--font-core);margin:0;letter-spacing:var(--tracking-heading)}
+  .showcase-hero .hero-artist{font:var(--type-body);font-size:13px;color:var(--text-secondary)}
+  .showcase-aside{display:flex;flex-direction:column;gap:var(--gutter)}
+  .showcase-sub{display:flex;gap:var(--space-16);padding:var(--space-16);border:1px solid var(--border-hairline);background:var(--surface-card);color:var(--text-body);text-decoration:none;align-items:center;flex:1;transition:border-color var(--duration-base) var(--ease),background-color var(--duration-base) var(--ease),transform var(--duration-base) var(--ease-out)}
+  .cs-inverse .showcase-sub{background:rgba(238,238,240,0.06);border-color:rgba(243,243,243,0.18)}
+  .showcase-sub:hover{border-color:var(--accent);background:var(--surface-warm);transform:translateY(-2px)}
+  .cs-inverse .showcase-sub:hover{background:rgba(238,238,240,0.12);border-color:var(--accent)}
+  .showcase-sub .sub-media{width:140px;aspect-ratio:16/10;overflow:hidden;background:#000;border:1px solid var(--border-hairline);flex:none}
+  .showcase-sub .sub-media canvas{width:100%;height:100%;object-fit:cover}
+  .showcase-sub .sub-info{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .showcase-sub .sub-tag{font:var(--type-label);color:var(--text-muted);text-transform:uppercase;letter-spacing:var(--tracking-label)}
+  .showcase-sub .sub-title{font:var(--weight-core) 15px/1.25 var(--font-core);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .showcase-sub .sub-artist{font:12px/1.4 var(--font-core);color:var(--text-secondary)}
+  @media(max-width:860px){
+    .showcase-grid{grid-template-columns:1fr}
+    .showcase-sub{flex-direction:column;align-items:stretch}
+    .showcase-sub .sub-media{width:100%}
+  }
+
   /* FIX: Ch03 진로 — 5열 (5번째 인재상 표시) */
   .tools{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--gutter);text-align:left;width:100%;margin-top:var(--space-12)}
   .tools .col{border-top:1px solid var(--border-strong);padding-top:var(--space-16);display:flex;flex-direction:column;gap:var(--space-12)}
@@ -361,6 +449,8 @@
 </svg>
 
 <script src="config.js"></script>
+<div id="tactical-cursor" aria-hidden="true"><div class="t-dot"></div><div class="t-ring"></div><div class="t-badge" id="cursor-badge"></div></div>
+
 <div class="scene" aria-hidden="true"><canvas id="scene"></canvas></div>
 
 <header class="site-header" id="header">
@@ -443,13 +533,47 @@
         <div class="kicker reveal" style="--i:0"><span class="cs-caption">03</span><i></i><span class="cs-caption">진로와 역량</span></div>
         <h2 class="h2 reveal" style="--i:1">당신이 만든 세계가<br>누군가의 현실이 된다</h2>
         <p class="lead reveal" style="--i:2">확장 미디어 크리에이션과 테크 크리에이션, 두 역량을 축으로 모든 과목을 설계했습니다. 전공이 목표로 삼는 인재상은 다섯 가지입니다.</p>
-        <div class="tools reveal" style="--i:3">
-          <div class="col"><span class="cs-caption">01 · 기획 · 연출</span><span class="h3">융복합 콘텐츠 기획자<br>실감미디어 디렉터</span></div>
-          <div class="col"><span class="cs-caption">02 · 그래픽 · 영상</span><span class="h3">컴퓨터 그래픽 아티스트<br>모션그래픽 · VFX</span></div>
-          <div class="col"><span class="cs-caption">03 · 인터랙션 · 테크</span><span class="h3">인터랙션 프로그래머<br>테크니컬 아티스트 · XR</span></div>
-          <div class="col"><span class="cs-caption">04 · 미디어아트</span><span class="h3">미디어 아티스트<br>오디오비주얼 · 설치 · 퍼포먼스</span></div>
-          <!-- FIX: 5번째 인재상 복원 -->
-          <div class="col"><span class="cs-caption">05 · 창업 · 교육</span><span class="h3">디지털아트 창업가<br>아트테크 에듀케이터</span></div>
+        <div class="matrix-ledger reveal" style="--i:3">
+          <div class="matrix-row" data-cursor="01 // DIRECTION">
+            <div class="m-idx">01 // DIRECTION</div>
+            <div class="m-main">
+              <h3 class="m-title">실감미디어 디렉션 &amp; 융복합 콘텐츠 기획</h3>
+              <p class="m-desc">전시·공연·미디어파사드·몰입형 공간의 총괄 연출과 내러티브 및 시스템을 설계합니다.</p>
+            </div>
+            <div class="m-tags"><span>Immersive Director</span><span>Exhibition Curator</span><span>Metaverse Producer</span></div>
+          </div>
+          <div class="matrix-row" data-cursor="02 // VISUALS">
+            <div class="m-idx">02 // COMPUTATIONAL VISUALS</div>
+            <div class="m-main">
+              <h3 class="m-title">컴퓨터 그래픽스 · 리얼타임 엔진 &amp; VFX</h3>
+              <p class="m-desc">3D 애니메이션, 캐릭터 테크닉, 실시간 렌더링 파이프라인과 비주얼 이펙트를 제작합니다.</p>
+            </div>
+            <div class="m-tags"><span>Technical Artist</span><span>3D/VFX Lead</span><span>Realtime Motion</span></div>
+          </div>
+          <div class="matrix-row" data-cursor="03 // INTERACTION">
+            <div class="m-idx">03 // INTERACTION &amp; CODE</div>
+            <div class="m-main">
+              <h3 class="m-title">인터랙션 프로그래밍 · 피지컬 컴퓨팅 &amp; XR</h3>
+              <p class="m-desc">센서·하드웨어·공간 컴퓨팅과 인공지능을 결합하여 관객과 반응하는 인터페이스를 구현합니다.</p>
+            </div>
+            <div class="m-tags"><span>Interaction Dev</span><span>Creative Coder</span><span>XR/Spatial Eng</span></div>
+          </div>
+          <div class="matrix-row" data-cursor="04 // FINE ARTS">
+            <div class="m-idx">04 // CONTEMPORARY MEDIA ART</div>
+            <div class="m-main">
+              <h3 class="m-title">미디어아트 · 오디오비주얼 &amp; 설치 예술</h3>
+              <p class="m-desc">빛, 소리, 공간, 데이터를 조형 언어로 승화시키는 실험적 인스톨레이션과 라이브 퍼포먼스를 탐구합니다.</p>
+            </div>
+            <div class="m-tags"><span>New Media Artist</span><span>Audio-Visual</span><span>Installation Lead</span></div>
+          </div>
+          <div class="matrix-row" data-cursor="05 // VENTURE">
+            <div class="m-idx">05 // CREATIVE VENTURE &amp; EDU</div>
+            <div class="m-main">
+              <h3 class="m-title">디지털아트 스타트업 창업 &amp; 융합 연구</h3>
+              <p class="m-desc">기술과 예술의 경계에서 새로운 형태의 비즈니스 모델을 구축하고 미래 예술 교육을 선도합니다.</p>
+            </div>
+            <div class="m-tags"><span>ArtTech Founder</span><span>R&amp;D Researcher</span><span>Future Educator</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -463,25 +587,31 @@
         <div class="reveal rowhead" style="--i:1">
           <h2 class="h2">학생 포트폴리오</h2><a class="btn secondary sm" href="portfolio.html" aria-label="포트폴리오 전체 보기">포트폴리오 전체 보기 <svg class="i"><use href="#arrow-up-right"/></svg></a>
         </div>
-        <div class="cards">
-          <a class="card reveal" style="--i:2" href="portfolio.html#/work/work-001" aria-label="작품: Pixel Bloom">
-            <div class="media"><canvas class="thumb" data-seed="3" aria-hidden="true"></canvas></div>
-            <span class="work-type">Installation · 2024</span>
-            <span class="title">Pixel Bloom</span>
-            <span class="work-artist">김도현 · Media Art</span>
+        <div class="showcase-grid reveal" style="--i:2">
+          <a class="showcase-hero" href="portfolio.html#/work/work-001" data-cursor="VIEW // 001">
+            <div class="hero-media"><canvas class="thumb" data-seed="3" aria-hidden="true"></canvas></div>
+            <div class="hero-meta"><span class="badge">01 // FEATURED EXHIBITION</span><span>INSTALLATION · 2024</span></div>
+            <h3 class="hero-title">Pixel Bloom</h3>
+            <span class="hero-artist">김도현 · Media Art (Interactive GLSL Shader &amp; Spatial Sound)</span>
           </a>
-          <a class="card reveal" style="--i:3" href="portfolio.html#/work/work-002" aria-label="작품: Frequency Map">
-            <div class="media"><canvas class="thumb" data-seed="11" aria-hidden="true"></canvas></div>
-            <span class="work-type">Mapping · 2024</span>
-            <span class="title">Frequency Map</span>
-            <span class="work-artist">이서연 · Interactive Art</span>
-          </a>
-          <a class="card reveal" style="--i:4" href="portfolio.html#/work/work-003" aria-label="작품: Synthetic Reverie">
-            <div class="media"><canvas class="thumb" data-seed="27" aria-hidden="true"></canvas></div>
-            <span class="work-type">Animation · 2023</span>
-            <span class="title">Synthetic Reverie</span>
-            <span class="work-artist">박준호 · 3D &amp; VFX</span>
-          </a>
+          <div class="showcase-aside">
+            <a class="showcase-sub" href="portfolio.html#/work/work-002" data-cursor="VIEW // 002">
+              <div class="sub-media"><canvas class="thumb" data-seed="11" aria-hidden="true"></canvas></div>
+              <div class="sub-info">
+                <span class="sub-tag">ARCHIVE 002 · MAPPING</span>
+                <h4 class="sub-title">Frequency Map</h4>
+                <span class="sub-artist">이서연 · Interactive Art</span>
+              </div>
+            </a>
+            <a class="showcase-sub" href="portfolio.html#/work/work-003" data-cursor="VIEW // 003">
+              <div class="sub-media"><canvas class="thumb" data-seed="27" aria-hidden="true"></canvas></div>
+              <div class="sub-info">
+                <span class="sub-tag">ARCHIVE 003 · ANIMATION</span>
+                <h4 class="sub-title">Synthetic Reverie</h4>
+                <span class="sub-artist">박준호 · 3D &amp; VFX</span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -1039,6 +1169,64 @@
       if (/[?&]debug=1/.test(location.search)) window.__play = { play: play, boxes: boxes, codeAt: codeAt, isDone: function () { return introDone; } };
       if (STATIC) { window.__scene = { g: g, boxes: boxes, frameFor: frameFor, state: function () { return { active: active, W: W, H: H, SHELL: SHELL, g: g }; } }; setTimeout(function () { resize(); if (ONLY) { activate(parseInt(ONLY, 10)); } else { pick(); } setFormation(active, false, true); render(performance.now()); }, 400); }
     }
+
+        /* Tactical Cursor & Text Scramble UX */
+    var cur = document.getElementById('tactical-cursor'), badge = document.getElementById('cursor-badge');
+    if (cur && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      var mx = -100, my = -100, cx = -100, cy = -100;
+      window.addEventListener('mousemove', function(e) {
+        mx = e.clientX; my = e.clientY;
+      });
+      (function loop() {
+        cx += (mx - cx) * 0.22;
+        cy += (my - cy) * 0.22;
+        cur.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
+        requestAnimationFrame(loop);
+      })();
+
+      var hoverTargets = 'a, button, [data-cursor], .matrix-row, .showcase-hero, .showcase-sub, .card, .btn';
+      document.addEventListener('mouseover', function(e) {
+        var t = e.target.closest ? e.target.closest(hoverTargets) : null;
+        if (t) {
+          cur.classList.add('is-hover');
+          var text = t.getAttribute('data-cursor') || (t.tagName === 'A' ? 'OPEN' : (t.tagName === 'BUTTON' ? 'SELECT' : 'VIEW'));
+          badge.textContent = text;
+          cur.classList.add('has-badge');
+        }
+      });
+      document.addEventListener('mouseout', function(e) {
+        var t = e.target.closest ? e.target.closest(hoverTargets) : null;
+        if (t) {
+          cur.classList.remove('is-hover');
+          cur.classList.remove('has-badge');
+        }
+      });
+    }
+
+    /* Cybernetic Text Scramble */
+    var GLYPHS = '0123456789/·—<>[]_{}*+~#';
+    function scrambleText(el) {
+      if (el._scrambling || reduce) return;
+      var orig = el.getAttribute('data-orig') || el.textContent;
+      el.setAttribute('data-orig', orig);
+      el._scrambling = true;
+      var dur = 200, t0 = performance.now();
+      function tick(now) {
+        var p = Math.min(1, (now - t0) / dur);
+        var out = '';
+        for (var i = 0; i < orig.length; i++) {
+          if (orig[i] === ' ' || i / orig.length < p) out += orig[i];
+          else out += GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+        }
+        el.textContent = out;
+        if (p < 1) requestAnimationFrame(tick);
+        else { el.textContent = orig; el._scrambling = false; }
+      }
+      requestAnimationFrame(tick);
+    }
+    document.querySelectorAll('.site-nav a, .subnav a, .m-title, .hero-title, .sub-title, .kicker span:last-child').forEach(function(el) {
+      el.addEventListener('mouseenter', function() { scrambleText(el); });
+    });
 
     /* 작품 카드 미디어 */
     document.querySelectorAll('canvas.thumb').forEach(function (cv) {
