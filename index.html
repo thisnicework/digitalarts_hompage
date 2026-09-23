@@ -261,44 +261,6 @@
   .center .kicker{justify-content:center;margin-bottom:var(--space-8)}
   .center .h2{max-width:22ch;margin-inline:auto}
   .center .lead{margin-inline:auto;max-width:44ch}
-    /* === Tactical Art-School Cursor === */
-  @media (hover: hover) and (pointer: fine) {
-    body, a, button, input, select, textarea, .card, .showcase-hero, .showcase-sub, .traj-card, .adm-card { cursor: none !important; }
-    #tactical-cursor {
-      position: fixed; top: 0; left: 0; z-index: 99999;
-      pointer-events: none; will-change: transform;
-      mix-blend-mode: difference;
-    }
-    .t-dot {
-      width: 5px; height: 5px; background: #fff; border-radius: 50%;
-      position: absolute; transform: translate(-50%, -50%);
-      transition: transform 0.12s ease;
-    }
-    .t-ring {
-      width: 26px; height: 26px; border: 1px solid rgba(255,255,255,0.7);
-      position: absolute; transform: translate(-50%, -50%);
-      border-radius: 50%;
-      transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1), height 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, border-radius 0.2s ease;
-    }
-    .t-badge {
-      position: absolute; left: 16px; top: -11px;
-      font: 600 9px/1 'Pretendard', monospace;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: #fff; background: rgba(0,0,0,0.88); padding: 3px 6px;
-      border: 1px solid rgba(255,255,255,0.35);
-      white-space: nowrap; opacity: 0; transform: translateY(4px);
-      transition: opacity 0.18s ease, transform 0.18s ease;
-    }
-    #tactical-cursor.is-hover .t-ring {
-      width: 48px; height: 48px; border-color: #fff;
-      border-radius: 4px;
-    }
-    #tactical-cursor.is-hover .t-dot { transform: translate(-50%, -50%) scale(1.6); }
-    #tactical-cursor.has-badge .t-badge { opacity: 1; transform: translateY(0); }
-  }
-  @media (hover: none), (pointer: coarse) {
-    #tactical-cursor { display: none !important; }
-  }
 
   /* === Trajectories Header & Horizontal 5-Column Grid (Ch03) === */
   .top .shell{max-width:1400px}
@@ -551,7 +513,6 @@
 </svg>
 
 <script src="config.js"></script>
-<div id="tactical-cursor" aria-hidden="true"><div class="t-dot"></div><div class="t-ring"></div><div class="t-badge" id="cursor-badge"></div></div>
 
 <div class="scene" aria-hidden="true"><canvas id="scene"></canvas></div>
 
@@ -1609,39 +1570,6 @@
       pick();
       if (/[?&]debug=1/.test(location.search)) window.__play = { play: play, boxes: boxes, codeAt: codeAt, isDone: function () { return introDone; } };
       if (STATIC) { window.__scene = { g: g, boxes: boxes, frameFor: frameFor, state: function () { return { active: active, W: W, H: H, SHELL: SHELL, g: g }; } }; setTimeout(function () { resize(); if (ONLY) { activate(parseInt(ONLY, 10)); } else { pick(); } setFormation(active, false, true); render(performance.now()); }, 400); }
-    }
-
-        /* Tactical Cursor & Text Scramble UX */
-    var cur = document.getElementById('tactical-cursor'), badge = document.getElementById('cursor-badge');
-    if (cur && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      var mx = -100, my = -100, cx = -100, cy = -100;
-      window.addEventListener('mousemove', function(e) {
-        mx = e.clientX; my = e.clientY;
-      });
-      (function loop() {
-        cx += (mx - cx) * 0.22;
-        cy += (my - cy) * 0.22;
-        cur.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
-        requestAnimationFrame(loop);
-      })();
-
-      var hoverTargets = 'a, button, [data-cursor], .curr-card, .traj-card, .adm-card, .showcase-hero, .showcase-sub, .card, .btn';
-      document.addEventListener('mouseover', function(e) {
-        var t = e.target.closest ? e.target.closest(hoverTargets) : null;
-        if (t) {
-          cur.classList.add('is-hover');
-          var text = t.getAttribute('data-cursor') || (t.tagName === 'A' ? 'OPEN' : (t.tagName === 'BUTTON' ? 'SELECT' : 'VIEW'));
-          badge.textContent = text;
-          cur.classList.add('has-badge');
-        }
-      });
-      document.addEventListener('mouseout', function(e) {
-        var t = e.target.closest ? e.target.closest(hoverTargets) : null;
-        if (t) {
-          cur.classList.remove('is-hover');
-          cur.classList.remove('has-badge');
-        }
-      });
     }
 
     /* Ch02 Curriculum Interactive Accordion */
