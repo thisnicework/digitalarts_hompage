@@ -298,21 +298,44 @@
     #tactical-cursor { display: none !important; }
   }
 
-  /* === Architectural Trajectories Ledger (Ch03) === */
-  .matrix-ledger{display:flex;flex-direction:column;width:100%;border-top:1px solid var(--border-strong);margin-top:var(--space-12);text-align:left}
-  .matrix-row{display:grid;grid-template-columns:120px 1.4fr 1fr;align-items:center;gap:var(--space-20);padding:var(--space-16) var(--space-12);border-bottom:1px solid var(--border-hairline);transition:background-color var(--duration-fast) var(--ease),opacity var(--duration-fast) var(--ease);position:relative}
+  /* === Trajectories Header & Matrix Ledger (Ch03) === */
+  .top .shell{max-width:1200px}
+  .traj-header{display:grid;grid-template-columns:1.15fr 0.95fr;gap:var(--space-48);align-items:end;text-align:left;width:100%;margin-bottom:var(--space-16);padding-bottom:var(--space-16);border-bottom:1px solid var(--border-strong)}
+  .traj-title-group{display:flex;flex-direction:column;gap:var(--space-12)}
+  .traj-title-group .kicker{margin-bottom:0;justify-content:flex-start}
+  .traj-title-group .h2{margin:0;text-align:left;font-size:clamp(22px,2.4vw,36px);line-height:1.2;letter-spacing:-0.01em}
+  .traj-meta-group{display:flex;flex-direction:column;gap:var(--space-16)}
+  .traj-meta-group .lead{margin:0;text-align:left;max-width:none;font-size:clamp(12.5px,0.95vw,14px);line-height:1.6;color:var(--text-secondary)}
+  .traj-badges{display:flex;gap:8px;flex-wrap:wrap}
+  .traj-pill{font:var(--weight-core) 10px/1.2 var(--font-label);letter-spacing:0.1em;text-transform:uppercase;padding:5px 9px;border:1px solid var(--border-hairline);color:var(--text-muted);background:rgba(0,0,0,0.02)}
+  
+  .matrix-ledger{display:flex;flex-direction:column;width:100%;text-align:left;position:relative;z-index:2}
+  .matrix-head{display:grid;grid-template-columns:230px minmax(0,1.35fr) minmax(0,1fr);gap:var(--space-24);padding:12px 16px;border-bottom:1px solid var(--border-hairline);color:var(--text-muted);font:var(--weight-core) 10px/1 var(--font-label);letter-spacing:0.14em;text-transform:uppercase}
+  .matrix-row{display:grid;grid-template-columns:230px minmax(0,1.35fr) minmax(0,1fr);align-items:center;gap:var(--space-24);padding:18px 16px;border-bottom:1px solid var(--border-hairline);transition:background-color var(--duration-fast) var(--ease),opacity var(--duration-fast) var(--ease);position:relative}
+  .matrix-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent);transition:width var(--duration-fast) var(--ease)}
   .matrix-row:hover{background:var(--surface-muted);opacity:1}
-  .matrix-ledger:hover .matrix-row:not(:hover){opacity:0.55}
-  .matrix-row .m-idx{font:var(--weight-core) var(--text-label)/1 var(--font-label);letter-spacing:var(--tracking-label);color:var(--text-muted);display:flex;align-items:center;gap:8px}
-  .matrix-row .m-idx::before{content:'';width:4px;height:4px;background:currentColor;display:inline-block}
-  .matrix-row:hover .m-idx{color:var(--text-body)}
-  .matrix-row .m-title{font:var(--weight-core) clamp(13px,1.1vw,16px)/1.35 var(--font-core);margin:0;color:var(--text-body)}
-  .matrix-row .m-desc{font:var(--type-body);font-size:12px;color:var(--text-secondary);margin:4px 0 0;line-height:1.4}
+  .matrix-row:hover::before{width:3px}
+  .matrix-ledger:hover .matrix-row:not(:hover){opacity:0.45}
+  
+  .matrix-row .m-idx{display:flex;align-items:center;gap:16px}
+  .matrix-row .m-num{font:600 24px/1 'Pretendard',monospace;letter-spacing:-0.02em;color:var(--text-body);transition:color var(--duration-fast) var(--ease)}
+  .matrix-row:hover .m-num{color:var(--accent)}
+  .matrix-row .m-subcode{display:flex;flex-direction:column;gap:3px}
+  .matrix-row .m-code{font:600 9.5px/1 var(--font-label);letter-spacing:0.14em;color:var(--text-muted);text-transform:uppercase}
+  .matrix-row .m-en{font:500 11px/1.2 var(--font-label);letter-spacing:0.06em;color:var(--text-secondary);text-transform:uppercase;white-space:nowrap}
+  
+  .matrix-row .m-main{display:flex;flex-direction:column;gap:3px}
+  .matrix-row .m-title{font:var(--weight-core) clamp(14px,1.05vw,16.5px)/1.3 var(--font-core);margin:0;color:var(--text-body);letter-spacing:0.01em}
+  .matrix-row .m-desc{font:var(--type-body);font-size:12.5px;color:var(--text-secondary);margin:0;line-height:1.45}
+  
   .matrix-row .m-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
-  .matrix-row .m-tags span{font:var(--weight-core) 10px/1.2 var(--font-label);letter-spacing:0.08em;padding:4px 8px;border:1px solid var(--border-hairline);border-radius:2px;color:var(--text-muted);text-transform:uppercase}
-  .matrix-row:hover .m-tags span{border-color:var(--text-body);color:var(--text-body)}
-  @media(max-width:860px){
-    .matrix-row{grid-template-columns:1fr;gap:var(--space-8);padding:var(--space-12) 0}
+  .matrix-row .m-tags span{font:var(--weight-core) 10.5px/1.2 var(--font-label);letter-spacing:0.06em;padding:5px 9px;border:1px solid var(--border-hairline);border-radius:2px;color:var(--text-muted);background:rgba(0,0,0,0.02);text-transform:uppercase;white-space:nowrap;transition:border-color 0.15s ease,color 0.15s ease,background 0.15s ease}
+  .matrix-row:hover .m-tags span{border-color:rgba(0,0,0,0.3);color:var(--text-body);background:#fff}
+
+  @media(max-width:960px){
+    .traj-header{grid-template-columns:1fr;gap:var(--space-20)}
+    .matrix-head{display:none}
+    .matrix-row{grid-template-columns:1fr;gap:var(--space-10);padding:var(--space-16) var(--space-12)}
     .matrix-row .m-tags{justify-content:flex-start}
   }
 
@@ -524,48 +547,100 @@
     </div>
   </section>
 
-  <!-- 03 · 진로와 역량 — FIX: 5번째 인재상 추가 -->
-  <section class="chapter top center" id="c3" data-mode="paper">
+  <!-- 03 · 진로와 역량 -->
+  <section class="chapter top" id="c3" data-mode="paper">
     <div class="shell">
       <div class="stack">
-        <div class="kicker reveal" style="--i:0"><span class="cs-caption">03</span><i></i><span class="cs-caption">진로와 역량</span></div>
-        <h2 class="h2 reveal" style="--i:1">당신이 만든 세계가<br>누군가의 현실이 된다</h2>
-        <p class="lead reveal" style="--i:2">확장 미디어 크리에이션과 테크 크리에이션, 두 역량을 축으로 모든 과목을 설계했습니다. 전공이 목표로 삼는 인재상은 다섯 가지입니다.</p>
-        <div class="matrix-ledger reveal" style="--i:3">
+        <div class="traj-header reveal" style="--i:0">
+          <div class="traj-title-group">
+            <div class="kicker"><span class="cs-caption">03</span><i></i><span class="cs-caption">진로와 역량 · Trajectories</span></div>
+            <h2 class="h2">당신이 만든 세계가<br>누군가의 현실이 된다</h2>
+          </div>
+          <div class="traj-meta-group">
+            <p class="lead">확장 미디어(Extended Media)와 인터랙티브 테크(Creative Tech), 두 역량을 축으로 모든 교과를 설계했습니다. 산업 현장과 현대 미디어아트를 아우르는 5대 전문 트랙입니다.</p>
+            <div class="traj-badges">
+              <span class="traj-pill">5 Specialized Tracks</span>
+              <span class="traj-pill">Dual Creative Core</span>
+              <span class="traj-pill">Industry Ready</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="matrix-ledger reveal" style="--i:2">
+          <div class="matrix-head">
+            <span>Track Code</span>
+            <span>Core Domain &amp; Focus</span>
+            <span style="text-align:right">Key Roles &amp; Competencies</span>
+          </div>
+
           <div class="matrix-row" data-cursor="01 // DIRECTION">
-            <div class="m-idx">01 // DIRECTION</div>
+            <div class="m-idx">
+              <span class="m-num">01</span>
+              <div class="m-subcode">
+                <span class="m-code">Track // 01</span>
+                <span class="m-en">Creative Direction</span>
+              </div>
+            </div>
             <div class="m-main">
               <h3 class="m-title">실감미디어 디렉션 &amp; 융복합 콘텐츠 기획</h3>
               <p class="m-desc">전시·공연·미디어파사드·몰입형 공간의 총괄 연출과 내러티브 및 시스템을 설계합니다.</p>
             </div>
             <div class="m-tags"><span>Immersive Director</span><span>Exhibition Curator</span><span>Metaverse Producer</span></div>
           </div>
+
           <div class="matrix-row" data-cursor="02 // VISUALS">
-            <div class="m-idx">02 // COMPUTATIONAL VISUALS</div>
+            <div class="m-idx">
+              <span class="m-num">02</span>
+              <div class="m-subcode">
+                <span class="m-code">Track // 02</span>
+                <span class="m-en">Computational Visuals</span>
+              </div>
+            </div>
             <div class="m-main">
               <h3 class="m-title">컴퓨터 그래픽스 · 리얼타임 엔진 &amp; VFX</h3>
               <p class="m-desc">3D 애니메이션, 캐릭터 테크닉, 실시간 렌더링 파이프라인과 비주얼 이펙트를 제작합니다.</p>
             </div>
             <div class="m-tags"><span>Technical Artist</span><span>3D/VFX Lead</span><span>Realtime Motion</span></div>
           </div>
+
           <div class="matrix-row" data-cursor="03 // INTERACTION">
-            <div class="m-idx">03 // INTERACTION &amp; CODE</div>
+            <div class="m-idx">
+              <span class="m-num">03</span>
+              <div class="m-subcode">
+                <span class="m-code">Track // 03</span>
+                <span class="m-en">Interaction &amp; Code</span>
+              </div>
+            </div>
             <div class="m-main">
               <h3 class="m-title">인터랙션 프로그래밍 · 피지컬 컴퓨팅 &amp; XR</h3>
               <p class="m-desc">센서·하드웨어·공간 컴퓨팅과 인공지능을 결합하여 관객과 반응하는 인터페이스를 구현합니다.</p>
             </div>
             <div class="m-tags"><span>Interaction Dev</span><span>Creative Coder</span><span>XR/Spatial Eng</span></div>
           </div>
+
           <div class="matrix-row" data-cursor="04 // FINE ARTS">
-            <div class="m-idx">04 // CONTEMPORARY MEDIA ART</div>
+            <div class="m-idx">
+              <span class="m-num">04</span>
+              <div class="m-subcode">
+                <span class="m-code">Track // 04</span>
+                <span class="m-en">Contemporary Media</span>
+              </div>
+            </div>
             <div class="m-main">
               <h3 class="m-title">미디어아트 · 오디오비주얼 &amp; 설치 예술</h3>
               <p class="m-desc">빛, 소리, 공간, 데이터를 조형 언어로 승화시키는 실험적 인스톨레이션과 라이브 퍼포먼스를 탐구합니다.</p>
             </div>
             <div class="m-tags"><span>New Media Artist</span><span>Audio-Visual</span><span>Installation Lead</span></div>
           </div>
+
           <div class="matrix-row" data-cursor="05 // VENTURE">
-            <div class="m-idx">05 // CREATIVE VENTURE &amp; EDU</div>
+            <div class="m-idx">
+              <span class="m-num">05</span>
+              <div class="m-subcode">
+                <span class="m-code">Track // 05</span>
+                <span class="m-en">Venture &amp; Research</span>
+              </div>
+            </div>
             <div class="m-main">
               <h3 class="m-title">디지털아트 스타트업 창업 &amp; 융합 연구</h3>
               <p class="m-desc">기술과 예술의 경계에서 새로운 형태의 비즈니스 모델을 구축하고 미래 예술 교육을 선도합니다.</p>
@@ -746,7 +821,7 @@
       { form: 'logo', yaw: 0, pitch: -0.08, sway: 0, spin: 0, morph: 0, flow: 0, live: 1, sMax: 1.0, sMin: 0.2, fit: 0.9 },
       { form: 'logo', yaw: -0.25, pitch: -0.06, sway: 0.10, spin: 0, morph: 0, flow: 0, live: 0.5, sMax: 0.85, sMin: 0.2, fit: 0.9 },
       { form: 'burst', yaw: 0.15, pitch: -0.1, sway: 0.20, spin: 0, morph: 1, flow: 0, live: 0, sMax: 0.85, sMin: 0.2, fit: 0.86 },
-      { form: 'field', yaw: 0, pitch: -1.1, sway: 0.02, spin: 0, morph: 0, flow: 1, live: 0, sMax: 1.0, sMin: 0.3, fit: 0.9 },
+      { form: 'field', yaw: 0, pitch: -1.1, sway: 0.02, spin: 0, morph: 0, flow: 1, live: 0, sMax: 0.75, sMin: 0.25, fit: 0.9, alpha: 0.12 },
       { form: 'logo', yaw: 0.1, pitch: -0.1, sway: 0.15, spin: 0, morph: 0, flow: 0, live: 0.4, sMax: 1.0, sMin: 0.18, fit: 0.92, alpha: 0.14 },
       { form: 'logo', yaw: 0, pitch: -0.05, sway: 0.18, spin: 0, morph: 0, flow: 0, live: 0.6, sMax: 0.6, sMin: 0.18, fit: 0.9 }
     ];
@@ -815,7 +890,7 @@
           box = { x0: shellL, x1: shellR, y0: HDR + M, y1: H - 0.12 * H - hOf('.wordmark') - M };
         } else if (i === 1) { box = { x0: W / 2 + 28, x1: shellR - 56, y0: HDR + M, y1: H - M };
         } else if (i === 2) { box = { x0: shellL, x1: W / 2 - 28, y0: HDR + M, y1: H - M };
-        } else if (i === 3) { box = { x0: shellL, x1: shellR - 56, y0: HDR + 0.07 * H + hOf('.stack') + 36, y1: H - 12 };
+        } else if (i === 3) { box = { x0: shellL, x1: shellR, y0: H - Math.min(130, H * 0.16), y1: H + 10 };
         } else if (i === 4) { box = { x0: shellL, x1: shellR, y0: HDR + M, y1: H - M };
         } else { var top5 = H - hOf('.foot') - 0.04 * H - hOf('.main .stack'); box = { x0: shellL, x1: shellR, y0: HDR + M, y1: Math.max(HDR + M + 80, top5 - 16) }; }
         var sMax = MOBILE() ? Math.min(1.4, c.sMax * 1.6) : c.sMax, fit = MOBILE() ? Math.min(0.96, c.fit + 0.06) : c.fit;
