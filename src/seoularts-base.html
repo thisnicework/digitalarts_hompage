@@ -261,7 +261,7 @@
   .center .lead{margin-inline:auto;max-width:44ch}
     /* === Tactical Art-School Cursor === */
   @media (hover: hover) and (pointer: fine) {
-    body, a, button, input, select, textarea, .card, .showcase-hero, .showcase-sub, .traj-card { cursor: none !important; }
+    body, a, button, input, select, textarea, .card, .showcase-hero, .showcase-sub, .traj-card, .adm-card { cursor: none !important; }
     #tactical-cursor {
       position: fixed; top: 0; left: 0; z-index: 99999;
       pointer-events: none; will-change: transform;
@@ -317,16 +317,12 @@
   .traj-card:hover{background:#ffffff;border-color:rgba(0,0,0,0.3);transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,0,0,0.06);opacity:1 !important}
   .traj-card:hover::before{height:3px}
   
-  .tc-top{display:flex;flex-direction:column;gap:5px;padding-bottom:14px;border-bottom:1px solid var(--border-hairline)}
-  .tc-idx-row{display:flex;align-items:baseline;justify-content:space-between}
-  .tc-num{font:700 28px/1 'Pretendard',monospace;letter-spacing:-0.02em;color:var(--text-body);transition:color var(--duration-fast) var(--ease)}
-  .traj-card:hover .tc-num{color:var(--accent)}
-  .tc-code{font:600 9.5px/1 var(--font-label);letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
-  .tc-en{font:600 11px/1.3 var(--font-label);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)}
+  .tc-top{display:flex;align-items:center;justify-content:space-between;min-height:26px;padding-bottom:12px;border-bottom:1px solid var(--border-hairline)}
+  .tc-en{font:600 11px/1.3 var(--font-label);letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);transition:color var(--duration-fast) var(--ease)}
   
-  .tc-body{flex:1;display:flex;flex-direction:column;gap:10px;padding-top:16px}
-  .tc-title{font:var(--weight-core) 15.5px/1.36 var(--font-core);margin:0;color:var(--text-body);letter-spacing:-0.01em;word-break:keep-all}
-  .tc-desc{font:12.5px/1.58 var(--font-core);color:var(--text-secondary);margin:0;word-break:keep-all}
+  .tc-body{flex:1;display:flex;flex-direction:column;gap:10px;padding-top:14px}
+  .tc-title{font:var(--weight-core) 14.5px/1.38 var(--font-core);margin:0;color:var(--text-body);letter-spacing:-0.01em;word-break:keep-all}
+  .tc-desc{font:12px/1.58 var(--font-core);color:var(--text-secondary);margin:0;word-break:keep-all}
   
   @media(max-width:1120px){
     .traj-header{grid-template-columns:1fr;gap:var(--space-20)}
@@ -382,13 +378,36 @@
   .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gutter)}
   .actions{display:flex;gap:var(--space-12);flex-wrap:wrap;justify-content:center}
   .works{align-content:center}
-  /* FIX: Ch05 구조 개선 */
-  .last{grid-template-rows:1fr auto;align-content:stretch}
-  .last .main{display:grid;align-content:center;padding-bottom:4vh;padding-top:3vh}
-  .foot{border-top:1px solid var(--border-hairline);padding-top:var(--space-24);padding-bottom:var(--space-32)}
+  /* === Chapter 05: Admissions & Academic Portal === */
+  .last{grid-template-rows:1fr auto;align-content:stretch;text-align:left}
+  .last .main{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:var(--space-48);align-items:center;padding-top:calc(var(--hdr) + 2vh);padding-bottom:2vh;width:100%;max-width:1400px}
+  .last .stack{display:flex;flex-direction:column;gap:var(--space-16);align-items:flex-start;text-align:left;width:100%;max-width:600px}
+  .last .kicker{margin-bottom:0;justify-content:flex-start}
+  .last .h2{font-size:clamp(24px,2.4vw,36px);line-height:1.22;letter-spacing:-0.01em;margin:0}
+  .last .lead{font-size:clamp(12.5px,0.92vw,14px);line-height:1.6;color:var(--text-secondary);margin:0;max-width:none}
+  
+  .adm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;margin-top:var(--space-4)}
+  .adm-card{display:flex;flex-direction:column;gap:5px;padding:14px 12px;background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:2px;transition:border-color var(--duration-fast) var(--ease),background-color var(--duration-fast) var(--ease),transform var(--duration-fast) var(--ease)}
+  .adm-card:hover{border-color:rgba(0,0,0,0.28);background:#ffffff;transform:translateY(-2px)}
+  .adm-tag{font:600 9.5px/1 var(--font-label);letter-spacing:0.12em;text-transform:uppercase;color:var(--accent)}
+  .adm-title{font:var(--weight-core) 13px/1.3 var(--font-core);margin:0;color:var(--text-body)}
+  .adm-desc{font:11px/1.5 var(--font-core);color:var(--text-secondary);margin:0;word-break:keep-all}
+  
+  .adm-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:var(--space-4)}
+  .adm-meta{font:var(--weight-core) 10.5px/1.2 var(--font-label);letter-spacing:0.06em;color:var(--text-muted);text-transform:uppercase}
+  
+  .foot{border-top:1px solid var(--border-hairline);padding-top:var(--space-20);padding-bottom:var(--space-24)}
   .foot .row{display:flex;justify-content:space-between;align-items:center;gap:var(--space-24);flex-wrap:wrap}
   .foot .links{display:flex;gap:var(--space-24);flex-wrap:wrap}
   .foot a{display:inline-flex;align-items:center;gap:var(--space-8);min-height:36px}
+
+  @media(max-width:960px){
+    .last .main{grid-template-columns:1fr;gap:var(--space-20)}
+    .adm-grid{grid-template-columns:1fr}
+    .last .stack{align-items:center;text-align:center}
+    .last .kicker{justify-content:center}
+    .adm-actions{justify-content:center}
+  }
   @media(max-width:1199px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
   @media(max-width:799px){
     html{scroll-snap-type:y proximity}
@@ -476,19 +495,19 @@
       <span class="brand-text"><small>Seoul Institute of the Arts</small><strong>Digital Arts</strong></span>
     </a>
     <nav class="site-nav" aria-label="주요 메뉴">
-      <a href="#c1" data-ch="1">전공소개</a><a href="#c2" data-ch="2">교육과정</a><a href="#c3" data-ch="3">진로</a><a href="#c4" data-ch="4">포트폴리오</a><a href="#c5" data-ch="5">입학안내</a>
+      <a href="#c1" data-ch="1">전공소개</a><a href="#c2" data-ch="2" style="display:none">교육과정</a><a href="#c3" data-ch="3">진로</a><a href="#c4" data-ch="4">포트폴리오</a><a href="#c5" data-ch="5">입학안내</a>
     </nav>
     <div class="hdr-actions"><a class="btn sm primary" href="https://www.seoularts.ac.kr/web/cop/bbsWeb/selectBoardList.do?bbsId=BBSMSTR_000000000924" target="_blank" rel="noopener">입학안내 <svg class="i"><use href="#arrow-up-right"/></svg></a></div>
   </div>
   <nav class="shell subnav" aria-label="챕터 메뉴">
-    <a href="#c1" data-ch="1">전공소개</a><a href="#c2" data-ch="2">교육과정</a><a href="#c3" data-ch="3">진로</a><a href="#c4" data-ch="4">포트폴리오</a><a href="#c5" data-ch="5">입학안내</a>
+    <a href="#c1" data-ch="1">전공소개</a><a href="#c2" data-ch="2" style="display:none">교육과정</a><a href="#c3" data-ch="3">진로</a><a href="#c4" data-ch="4">포트폴리오</a><a href="#c5" data-ch="5">입학안내</a>
   </nav>
 </header>
 
 <nav class="progress" aria-label="챕터">
   <a href="#c0" data-ch="0" class="cs-caption"><i></i>00</a>
   <a href="#c1" data-ch="1" class="cs-caption"><i></i>01</a>
-  <a href="#c2" data-ch="2" class="cs-caption"><i></i>02</a>
+  <a href="#c2" data-ch="2" class="cs-caption" style="display:none"><i></i>02</a>
   <a href="#c3" data-ch="3" class="cs-caption"><i></i>03</a>
   <a href="#c4" data-ch="4" class="cs-caption"><i></i>04</a>
   <a href="#c5" data-ch="5" class="cs-caption"><i></i>05</a>
@@ -524,7 +543,7 @@
   </section>
 
   <!-- 02 · 교육과정 -->
-  <section class="chapter right" id="c2" data-mode="ink">
+  <section class="chapter right" id="c2" data-mode="ink" style="display:none">
     <div class="shell">
       <div class="stack">
         <div class="kicker reveal" style="--i:0"><span class="cs-caption">02</span><i></i><span class="cs-caption">교육과정</span></div>
@@ -552,9 +571,9 @@
             <h2 class="h2">당신이 만든 세계가<br>누군가의 현실이 된다</h2>
           </div>
           <div class="traj-meta-group">
-            <p class="lead">확장 미디어(Extended Media)와 인터랙티브 테크(Creative Tech), 두 역량을 축으로 모든 교과를 설계했습니다. 산업 현장과 현대 미디어아트를 아우르는 5대 전문 트랙입니다.</p>
+            <p class="lead">확장 미디어(Extended Media)와 인터랙티브 테크(Creative Tech), 두 역량을 축으로 모든 교과를 설계했습니다. 산업 현장과 현대 미디어아트를 아우르는 전문 창작 진로 영역입니다.</p>
             <div class="traj-badges">
-              <span class="traj-pill">5 Specialized Tracks</span>
+              <span class="traj-pill">Creative Pathways</span>
               <span class="traj-pill">Dual Creative Core</span>
               <span class="traj-pill">Industry Ready</span>
             </div>
@@ -562,13 +581,9 @@
         </div>
 
         <div class="traj-grid reveal" style="--i:2">
-          <!-- 01 -->
-          <div class="traj-card" data-cursor="01 // DIRECTION">
+          <!-- Creative Direction -->
+          <div class="traj-card" data-cursor="CREATIVE DIRECTION">
             <div class="tc-top">
-              <div class="tc-idx-row">
-                <span class="tc-num">01</span>
-                <span class="tc-code">Track // 01</span>
-              </div>
               <span class="tc-en">Creative Direction</span>
             </div>
             <div class="tc-body">
@@ -577,13 +592,9 @@
             </div>
           </div>
 
-          <!-- 02 -->
-          <div class="traj-card" data-cursor="02 // VISUALS">
+          <!-- Computational Visuals -->
+          <div class="traj-card" data-cursor="COMPUTATIONAL VISUALS">
             <div class="tc-top">
-              <div class="tc-idx-row">
-                <span class="tc-num">02</span>
-                <span class="tc-code">Track // 02</span>
-              </div>
               <span class="tc-en">Computational Visuals</span>
             </div>
             <div class="tc-body">
@@ -592,13 +603,9 @@
             </div>
           </div>
 
-          <!-- 03 -->
-          <div class="traj-card" data-cursor="03 // INTERACTION">
+          <!-- Interaction & Code -->
+          <div class="traj-card" data-cursor="INTERACTION &amp; CODE">
             <div class="tc-top">
-              <div class="tc-idx-row">
-                <span class="tc-num">03</span>
-                <span class="tc-code">Track // 03</span>
-              </div>
               <span class="tc-en">Interaction &amp; Code</span>
             </div>
             <div class="tc-body">
@@ -607,13 +614,9 @@
             </div>
           </div>
 
-          <!-- 04 -->
-          <div class="traj-card" data-cursor="04 // FINE ARTS">
+          <!-- Contemporary Media -->
+          <div class="traj-card" data-cursor="CONTEMPORARY MEDIA">
             <div class="tc-top">
-              <div class="tc-idx-row">
-                <span class="tc-num">04</span>
-                <span class="tc-code">Track // 04</span>
-              </div>
               <span class="tc-en">Contemporary Media</span>
             </div>
             <div class="tc-body">
@@ -622,13 +625,9 @@
             </div>
           </div>
 
-          <!-- 05 -->
-          <div class="traj-card" data-cursor="05 // VENTURE">
+          <!-- Venture & Research -->
+          <div class="traj-card" data-cursor="VENTURE &amp; RESEARCH">
             <div class="tc-top">
-              <div class="tc-idx-row">
-                <span class="tc-num">05</span>
-                <span class="tc-code">Track // 05</span>
-              </div>
               <span class="tc-en">Venture &amp; Research</span>
             </div>
             <div class="tc-body">
@@ -680,16 +679,38 @@
   </section>
 
   <!-- 05 · 입학안내 + footer -->
-  <section class="chapter center last" id="c5" data-mode="paper">
+  <section class="chapter last" id="c5" data-mode="paper">
     <div class="shell main">
       <div class="stack">
-        <div class="kicker reveal" style="--i:0;justify-content:center"><span class="cs-caption">05</span><i></i><span class="cs-caption">입학안내</span></div>
-        <h2 class="h2 reveal" style="--i:1">만드는 사람이 곧 매체가 된다.</h2>
-        <p class="lead reveal" style="--i:2">모집 시기와 전형 방법, 실기 안내는 서울예술대학교 입학처 공지에서 확인할 수 있습니다.</p>
-        <div class="actions reveal" style="--i:3">
-          <a class="btn lg primary" href="https://www.seoularts.ac.kr/web/cop/bbsWeb/selectBoardList.do?bbsId=BBSMSTR_000000000924" target="_blank" rel="noopener">입학처 바로가기 <svg class="i i-20"><use href="#arrow-up-right"/></svg></a>
+        <div class="kicker reveal" style="--i:0"><span class="cs-caption">05</span><i></i><span class="cs-caption">입학안내 · Admissions</span></div>
+        <h2 class="h2 reveal" style="--i:1">만드는 사람이 곧 매체가 된다</h2>
+        <p class="lead reveal" style="--i:2">도구와 코드를 예술의 재료로 다루며, 아직 세상에 없는 새로운 형태의 예술을 함께 만들어갈 창작자를 기다립니다.</p>
+        
+        <div class="adm-grid reveal" style="--i:3">
+          <div class="adm-card" data-cursor="ROUTE // 01">
+            <span class="adm-tag">Route // 01</span>
+            <h3 class="adm-title">수시 · 정시 신입학</h3>
+            <p class="adm-desc">실기전형 (발상과 표현, 디지털아트 창의실기) 및 비실기 특별전형</p>
+          </div>
+          <div class="adm-card" data-cursor="ROUTE // 02">
+            <span class="adm-tag">Route // 02</span>
+            <h3 class="adm-title">3+1 학사학위 심화</h3>
+            <p class="adm-desc">전문학사 3년 수료 후 1년 심화 과정으로 4년제 예술학사(BFA) 취득</p>
+          </div>
+          <div class="adm-card" data-cursor="ROUTE // 03">
+            <span class="adm-tag">Route // 03</span>
+            <h3 class="adm-title">실기 &amp; 포트폴리오</h3>
+            <p class="adm-desc">개인 창작 작업물, 코드 데모, 미디어 이해도 심층 구술면접 평가</p>
+          </div>
         </div>
+
+        <div class="adm-actions reveal" style="--i:4">
+          <a class="btn lg primary" href="https://www.seoularts.ac.kr/web/cop/bbsWeb/selectBoardList.do?bbsId=BBSMSTR_000000000924" target="_blank" rel="noopener">입학처 모집요강 바로가기 <svg class="i i-20"><use href="#arrow-up-right"/></svg></a>
+          <a class="btn lg secondary" href="https://www.seoularts.ac.kr/web/cop/bbsWeb/selectBoardList.do?bbsId=BBSMSTR_000000000925" target="_blank" rel="noopener">입학 Q&amp;A 바로가기 <svg class="i"><use href="#arrow-up-right"/></svg></a>
+        </div>
+        <span class="adm-meta reveal" style="--i:5">입학 문의: 서울예술대학교 입학학생처 입학팀 031-412-7123 · 안산 창작캠퍼스</span>
       </div>
+      <div class="adm-visual-col" aria-hidden="true"></div>
     </div>
     <footer class="shell foot">
       <div class="row">
@@ -812,7 +833,7 @@
       { form: 'burst', yaw: 0.15, pitch: -0.1, sway: 0.20, spin: 0, morph: 1, flow: 0, live: 0, sMax: 0.85, sMin: 0.2, fit: 0.86 },
       { form: 'field', yaw: 0, pitch: -1.05, sway: 0.03, spin: 0, morph: 0, flow: 1, live: 0.2, sMax: 1.1, sMin: 0.35, fit: 0.95 },
       { form: 'logo', yaw: 0.1, pitch: -0.1, sway: 0.15, spin: 0, morph: 0, flow: 0, live: 0.4, sMax: 1.0, sMin: 0.18, fit: 0.92, alpha: 0.14 },
-      { form: 'logo', yaw: 0, pitch: -0.05, sway: 0.18, spin: 0, morph: 0, flow: 0, live: 0.6, sMax: 0.6, sMin: 0.18, fit: 0.9 }
+      { form: 'logo', yaw: -0.15, pitch: -0.06, sway: 0.12, spin: 0, morph: 0, flow: 0, live: 0.5, sMax: 0.82, sMin: 0.2, fit: 0.92 }
     ];
     var VW = function () { return document.documentElement.clientWidth || window.innerWidth; };
     var VH = function () { return document.documentElement.clientHeight || window.innerHeight; };
@@ -881,7 +902,10 @@
         } else if (i === 2) { box = { x0: shellL, x1: W / 2 - 28, y0: HDR + M, y1: H - M };
         } else if (i === 3) { var top3 = Math.min(H - 260, HDR + 0.04 * H + hOf('.stack') + 16); box = { x0: shellL - 40, x1: shellR + 40, y0: top3, y1: H + 24 };
         } else if (i === 4) { box = { x0: shellL, x1: shellR, y0: HDR + M, y1: H - M };
-        } else { var top5 = H - hOf('.foot') - 0.04 * H - hOf('.main .stack'); box = { x0: shellL, x1: shellR, y0: HDR + M, y1: Math.max(HDR + M + 80, top5 - 16) }; }
+        } else {
+          if (W < 960) { var top5 = H - hOf('.foot') - 0.04 * H - hOf('.main .stack'); box = { x0: shellL, x1: shellR, y0: HDR + 10, y1: Math.max(HDR + 80, top5 - 10) }; }
+          else { box = { x0: W / 2 + 70, x1: shellR + 24, y0: HDR + M, y1: H - hOf('.foot') - M }; }
+        }
         var sMax = MOBILE() ? Math.min(1.4, c.sMax * 1.6) : c.sMax, fit = MOBILE() ? Math.min(0.96, c.fit + 0.06) : c.fit;
         var bw = Math.max(40, box.x1 - box.x0), bh = Math.max(40, box.y1 - box.y0), sc = sMax;
         for (var it = 0; it < 2; it++) { var bb = projectBBox(c.form, sc, c.yaw, c.pitch); var k2 = Math.min(bw * fit / (bb.x1 - bb.x0), bh * fit / (bb.y1 - bb.y0)); sc = Math.max(c.sMin, Math.min(sMax, sc * k2)); }
@@ -1172,19 +1196,35 @@
         ticking = false;
         if (ONLY || PAGED) return;
         var mid = window.scrollY + VH() * 0.5, idx = 0;
-        for (var k = 0; k < chapters.length; k++) { if (mid >= chapters[k].offsetTop) idx = k; }
+        for (var k = 0; k < chapters.length; k++) {
+          if (chapters[k].offsetParent === null) continue;
+          if (mid >= chapters[k].offsetTop) idx = k;
+        }
         activate(idx);
       }
       window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(pick); } }, { passive: true });
 
       var paging = false, mainEl = document.querySelector('main');
+      function nextVisible(from, dir) {
+        var nxt = from + dir;
+        while (nxt >= 0 && nxt < chapters.length) {
+          if (chapters[nxt].offsetParent !== null) return nxt;
+          nxt += dir;
+        }
+        return from;
+      }
       function goTo(i) {
+        if (chapters[i] && chapters[i].offsetParent === null) {
+          i = nextVisible(active, i >= active ? 1 : -1);
+        }
         i = Math.max(0, Math.min(chapters.length - 1, i));
+        if (chapters[i].offsetParent === null) return;
         if (!introDone || paging || i === active) return;
         paging = true;
         if (PAGED) {
           chapters[active].scrollTop = 0;
-          mainEl.style.transform = 'translateY(' + (-i * 100) + '%)';
+          var visIdx = 0; for (var vi = 0; vi < i; vi++) { if (chapters[vi].offsetParent !== null) visIdx++; }
+          mainEl.style.transform = 'translateY(' + (-visIdx * 100) + '%)';
           activate(i);
           setTimeout(function () { paging = false; }, reduce ? 20 : 640);
           return;
@@ -1200,7 +1240,10 @@
         document.documentElement.classList.add('touch-paging');
         window.scrollTo(0, 0);
         document.querySelectorAll('a[href^="#c"]').forEach(function (a) { a.addEventListener('click', function (e) { var n = parseInt(a.getAttribute('href').slice(2), 10); if (!isNaN(n)) { e.preventDefault(); goTo(n); } }); });
-        window.addEventListener('resize', function () { mainEl.style.transform = 'translateY(' + (-active * 100) + '%)'; });
+        window.addEventListener('resize', function () {
+          var visIdx = 0; for (var vi = 0; vi < active; vi++) { if (chapters[vi].offsetParent !== null) visIdx++; }
+          mainEl.style.transform = 'translateY(' + (-visIdx * 100) + '%)';
+        });
         var ty = null, tx = null, tSkip = false, tFired = false;
         document.addEventListener('touchstart', function (e) {
           var t = e.touches[0]; ty = t.clientY; tx = t.clientX; tFired = false;
@@ -1218,7 +1261,7 @@
             if ((dy < 0 && !atBottom) || (dy > 0 && !atTop)) return;
           }
           if (e.cancelable) e.preventDefault();
-          if (!tFired && Math.abs(dy) > 24) { tFired = true; goTo(active + (dy < 0 ? 1 : -1)); }
+          if (!tFired && Math.abs(dy) > 24) { tFired = true; goTo(nextVisible(active, dy < 0 ? 1 : -1)); }
         }, { passive: false });
         var tEnd = function () { ty = null; tx = null; tFired = false; tSkip = false; };
         document.addEventListener('touchend', tEnd, { passive: true });
@@ -1246,7 +1289,7 @@
         requestAnimationFrame(loop);
       })();
 
-      var hoverTargets = 'a, button, [data-cursor], .traj-card, .showcase-hero, .showcase-sub, .card, .btn';
+      var hoverTargets = 'a, button, [data-cursor], .traj-card, .adm-card, .showcase-hero, .showcase-sub, .card, .btn';
       document.addEventListener('mouseover', function(e) {
         var t = e.target.closest ? e.target.closest(hoverTargets) : null;
         if (t) {
