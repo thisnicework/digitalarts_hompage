@@ -333,11 +333,12 @@
   .set li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:var(--space-16);padding:var(--space-16) 0;border-bottom:1px solid var(--border-hairline);align-items:baseline}
   .set li .h3{font-size:clamp(13px,1.1vw,19px)}
   .set li p{color:var(--text-secondary);max-width:44ch}
-  .right .stack{gap:var(--space-16);width:100%}
+  .right .stack{gap:14px;width:100%}
+  #c2 .kicker{margin-bottom:0}
   /* === Curriculum Modular Interactive Accordion (Ch02) === */
-  .curr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;margin-top:var(--space-4);align-items:start}
-  .curr-card{display:flex;flex-direction:column;gap:8px;padding:14px 16px;background:rgba(255,255,255,0.028);border:1px solid rgba(255,255,255,0.08);border-radius:3px;position:relative;text-align:left;cursor:pointer;outline:none;user-select:none;transition:background-color var(--duration-fast) var(--ease),border-color var(--duration-fast) var(--ease),box-shadow var(--duration-fast) var(--ease),transform var(--duration-fast) var(--ease)}
-  .curr-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:0;background:var(--accent);transition:width var(--duration-fast) var(--ease);border-radius:3px 0 0 3px}
+  .curr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;margin-top:2px;align-items:start}
+  .curr-card{display:flex;flex-direction:column;gap:8px;padding:14px 17px;background:rgba(255,255,255,0.028);border:1px solid rgba(255,255,255,0.08);border-radius:4px;position:relative;text-align:left;cursor:pointer;outline:none;user-select:none;transition:background-color var(--duration-fast) var(--ease),border-color var(--duration-fast) var(--ease),box-shadow var(--duration-fast) var(--ease),transform var(--duration-fast) var(--ease)}
+  .curr-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:0;background:var(--accent);transition:width var(--duration-fast) var(--ease);border-radius:4px 0 0 4px}
   .curr-card:hover{background:rgba(255,255,255,0.065);border-color:rgba(238,39,55,0.45);box-shadow:0 8px 24px rgba(0,0,0,0.35)}
   .curr-card:hover::before{width:2.5px}
   .curr-card.is-open{background:rgba(255,255,255,0.06);border-color:rgba(238,39,55,0.6);box-shadow:0 12px 28px rgba(0,0,0,0.45)}
@@ -345,31 +346,31 @@
   .curr-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
   .curr-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-  .curr-badges{display:inline-flex;align-items:center;gap:7px}
-  .curr-badge{font:700 9.5px/1 var(--font-label);letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);background:rgba(238,39,55,0.1);padding:3.5px 6.5px;border-radius:2px;border:1px solid rgba(238,39,55,0.25)}
-  .curr-subbadge{font:500 11px/1.2 var(--font-core);color:var(--text-secondary);letter-spacing:-0.01em}
-  .curr-toggle{width:20px;height:20px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:var(--text-muted);transition:background-color var(--duration-fast),color var(--duration-fast),border-color var(--duration-fast),transform var(--duration-fast)}
-  .curr-chevron{width:11px;height:11px;transition:transform 0.32s cubic-bezier(0.16,1,0.3,1);color:inherit}
+  .curr-badges{display:inline-flex;align-items:center;gap:8px}
+  .curr-badge{font:700 10.5px/1 var(--font-label);letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);background:rgba(238,39,55,0.1);padding:4px 7.5px;border-radius:3px;border:1px solid rgba(238,39,55,0.28)}
+  .curr-subbadge{font:500 12.5px/1.2 var(--font-core);color:rgba(255,255,255,0.75);letter-spacing:-0.01em}
+  .curr-toggle{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:var(--text-muted);transition:background-color var(--duration-fast),color var(--duration-fast),border-color var(--duration-fast),transform var(--duration-fast)}
+  .curr-chevron{width:12px;height:12px;transition:transform 0.32s cubic-bezier(0.16,1,0.3,1);color:inherit}
   .curr-card:hover .curr-toggle{background:rgba(238,39,55,0.15);color:var(--accent);border-color:rgba(238,39,55,0.3)}
   .curr-card.is-open .curr-toggle{background:var(--accent);color:#ffffff;border-color:var(--accent)}
   .curr-card.is-open .curr-chevron{transform:rotate(180deg)}
 
-  .curr-title{font:var(--weight-core) 13.5px/1.32 var(--font-core);color:var(--text-body);margin:0;letter-spacing:-0.01em;word-break:keep-all}
+  .curr-title{font:600 15px/1.3 var(--font-core);color:var(--text-body);margin:0;letter-spacing:-0.015em;word-break:keep-all}
 
-  .curr-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
-  .curr-tag{font:10px/1.2 var(--font-core);color:rgba(243,243,243,0.7);background:rgba(255,255,255,0.04);padding:3px 6px;border-radius:2px;border:1px solid rgba(255,255,255,0.07);white-space:nowrap;transition:color var(--duration-fast),background-color var(--duration-fast),border-color var(--duration-fast)}
-  .curr-card:hover .curr-tag{color:#ffffff;background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15)}
+  .curr-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+  .curr-tag{font:11.5px/1.25 var(--font-core);color:rgba(243,243,243,0.85);background:rgba(255,255,255,0.045);padding:4px 8px;border-radius:3px;border:1px solid rgba(255,255,255,0.08);white-space:nowrap;transition:color var(--duration-fast),background-color var(--duration-fast),border-color var(--duration-fast)}
+  .curr-card:hover .curr-tag{color:#ffffff;background:rgba(255,255,255,0.09);border-color:rgba(255,255,255,0.18)}
 
   /* Accordion Drawer */
   .curr-drawer{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.32s cubic-bezier(0.16,1,0.3,1)}
   .curr-card.is-open .curr-drawer{grid-template-rows:1fr}
   .curr-drawer-inner{overflow:hidden}
   .curr-detail{padding-top:12px;margin-top:6px;border-top:1px dashed rgba(255,255,255,0.12);display:flex;flex-direction:column;gap:10px}
-  .curr-desc{font:11.5px/1.55 var(--font-core);color:rgba(243,243,243,0.78);margin:0;word-break:keep-all}
-  .curr-meta-list{display:flex;flex-direction:column;gap:6px;background:rgba(0,0,0,0.28);padding:9px 11px;border-radius:3px;border:1px solid rgba(255,255,255,0.06)}
-  .curr-meta-row{display:grid;grid-template-columns:56px 1fr;gap:8px;align-items:baseline}
-  .curr-meta-k{font:700 9px/1.2 var(--font-label);letter-spacing:0.08em;text-transform:uppercase;color:var(--accent)}
-  .curr-meta-v{font:10.5px/1.45 var(--font-core);color:rgba(243,243,243,0.92);word-break:keep-all}
+  .curr-desc{font:12.5px/1.55 var(--font-core);color:rgba(243,243,243,0.82);margin:0;word-break:keep-all}
+  .curr-meta-list{display:flex;flex-direction:column;gap:6px;background:rgba(0,0,0,0.3);padding:10px 12px;border-radius:3px;border:1px solid rgba(255,255,255,0.06)}
+  .curr-meta-row{display:grid;grid-template-columns:58px 1fr;gap:8px;align-items:baseline}
+  .curr-meta-k{font:700 10px/1.2 var(--font-label);letter-spacing:0.08em;text-transform:uppercase;color:var(--accent)}
+  .curr-meta-v{font:11.5px/1.45 var(--font-core);color:rgba(243,243,243,0.92);word-break:keep-all}
 
   /* Studio Full-Width Card (Row 4) */
   .curr-card.studio{grid-column:1 / -1;background:rgba(238,39,55,0.035);border-color:rgba(238,39,55,0.22);padding:14px 18px}
@@ -379,14 +380,14 @@
   .curr-card.studio .curr-info{display:flex;flex-direction:column;gap:6px}
   .curr-card.studio .curr-tags{margin-top:0}
   .curr-card.studio .curr-meta-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px 14px}
-  .curr-card.studio .curr-meta-row{grid-template-columns:64px 1fr}
+  .curr-card.studio .curr-meta-row{grid-template-columns:68px 1fr}
 
   @media(max-width:768px){
     .curr-grid{grid-template-columns:1fr}
     .curr-card.studio .curr-layout{grid-template-columns:1fr;gap:10px}
     .curr-card.studio .curr-meta-list{grid-template-columns:1fr}
   }
-  @media(min-width:800px) and (max-height:860px){.set li{padding:var(--space-12) 0}.curr-card{padding:11px 13px;gap:5px}.right .stack{gap:var(--space-12)}}
+  @media(min-width:800px) and (max-height:680px){.set li{padding:var(--space-12) 0}.curr-card{padding:10px 12px;gap:5px}.right .stack{gap:var(--space-12)}}
   .cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gutter)}
   .cols3 .col{border-top:1px solid var(--border-strong);padding-top:var(--space-16);display:flex;flex-direction:column;gap:var(--space-8)}
   .rowhead{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-24);flex-wrap:wrap;width:100%}
