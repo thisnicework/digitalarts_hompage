@@ -312,28 +312,21 @@
   .traj-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;width:100%;text-align:left;position:relative;z-index:2;align-items:stretch}
   .traj-grid:hover .traj-card:not(:hover){opacity:0.42}
   
-  .traj-card{display:flex;flex-direction:column;justify-content:space-between;padding:22px 18px 18px;background:var(--surface-card);border:1px solid var(--border-hairline);position:relative;transition:transform var(--duration-base) var(--ease-out),border-color var(--duration-base) var(--ease),background-color var(--duration-base) var(--ease),opacity var(--duration-fast) var(--ease),box-shadow var(--duration-base) var(--ease)}
+  .traj-card{display:flex;flex-direction:column;padding:24px 20px;background:var(--surface-card);border:1px solid var(--border-hairline);position:relative;transition:transform var(--duration-base) var(--ease-out),border-color var(--duration-base) var(--ease),background-color var(--duration-base) var(--ease),opacity var(--duration-fast) var(--ease),box-shadow var(--duration-base) var(--ease)}
   .traj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:0;background:var(--accent);transition:height var(--duration-fast) var(--ease)}
   .traj-card:hover{background:#ffffff;border-color:rgba(0,0,0,0.3);transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,0,0,0.06);opacity:1 !important}
   .traj-card:hover::before{height:3px}
   
-  .tc-top{display:flex;flex-direction:column;gap:4px;padding-bottom:14px;border-bottom:1px solid var(--border-hairline)}
+  .tc-top{display:flex;flex-direction:column;gap:5px;padding-bottom:14px;border-bottom:1px solid var(--border-hairline)}
   .tc-idx-row{display:flex;align-items:baseline;justify-content:space-between}
   .tc-num{font:700 28px/1 'Pretendard',monospace;letter-spacing:-0.02em;color:var(--text-body);transition:color var(--duration-fast) var(--ease)}
   .traj-card:hover .tc-num{color:var(--accent)}
   .tc-code{font:600 9.5px/1 var(--font-label);letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
   .tc-en{font:600 11px/1.3 var(--font-label);letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)}
   
-  .tc-body{flex:1;display:flex;flex-direction:column;gap:8px;padding:16px 0}
-  .tc-title{font:var(--weight-core) 15px/1.35 var(--font-core);margin:0;color:var(--text-body);letter-spacing:-0.01em;word-break:keep-all}
-  .tc-desc{font:12px/1.55 var(--font-core);color:var(--text-secondary);margin:0;word-break:keep-all}
-  
-  .tc-foot{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px dashed var(--border-hairline)}
-  .tc-foot-label{font:600 9px/1 var(--font-label);letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted)}
-  .tc-tags{display:flex;flex-direction:column;gap:5px}
-  .tc-tags span{font:var(--weight-core) 10.5px/1.2 var(--font-label);letter-spacing:0.04em;padding:5px 8px;border:1px solid var(--border-hairline);border-radius:2px;color:var(--text-muted);background:rgba(0,0,0,0.02);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:all var(--duration-fast) var(--ease)}
-  .traj-card:hover .tc-tags span{border-color:rgba(0,0,0,0.2);color:var(--text-body);background:#fff}
-  .traj-card .tc-tags span:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .tc-body{flex:1;display:flex;flex-direction:column;gap:10px;padding-top:16px}
+  .tc-title{font:var(--weight-core) 15.5px/1.36 var(--font-core);margin:0;color:var(--text-body);letter-spacing:-0.01em;word-break:keep-all}
+  .tc-desc{font:12.5px/1.58 var(--font-core);color:var(--text-secondary);margin:0;word-break:keep-all}
   
   @media(max-width:1120px){
     .traj-header{grid-template-columns:1fr;gap:var(--space-20)}
@@ -582,14 +575,6 @@
               <h3 class="tc-title">실감미디어 디렉션 &amp; 융복합 콘텐츠 기획</h3>
               <p class="tc-desc">전시·공연·미디어파사드·몰입형 공간의 총괄 연출과 내러티브 및 시스템을 설계합니다.</p>
             </div>
-            <div class="tc-foot">
-              <span class="tc-foot-label">Key Roles</span>
-              <div class="tc-tags">
-                <span>Immersive Director</span>
-                <span>Exhibition Curator</span>
-                <span>Metaverse Producer</span>
-              </div>
-            </div>
           </div>
 
           <!-- 02 -->
@@ -604,14 +589,6 @@
             <div class="tc-body">
               <h3 class="tc-title">컴퓨터 그래픽스 · 리얼타임 엔진 &amp; VFX</h3>
               <p class="tc-desc">3D 애니메이션, 캐릭터 테크닉, 실시간 렌더링 파이프라인과 비주얼 이펙트를 제작합니다.</p>
-            </div>
-            <div class="tc-foot">
-              <span class="tc-foot-label">Key Roles</span>
-              <div class="tc-tags">
-                <span>Technical Artist</span>
-                <span>3D/VFX Lead</span>
-                <span>Realtime Motion</span>
-              </div>
             </div>
           </div>
 
@@ -628,14 +605,6 @@
               <h3 class="tc-title">인터랙션 프로그래밍 · 피지컬 컴퓨팅 &amp; XR</h3>
               <p class="tc-desc">센서·하드웨어·공간 컴퓨팅과 인공지능을 결합하여 관객과 반응하는 인터페이스를 구현합니다.</p>
             </div>
-            <div class="tc-foot">
-              <span class="tc-foot-label">Key Roles</span>
-              <div class="tc-tags">
-                <span>Interaction Dev</span>
-                <span>Creative Coder</span>
-                <span>XR/Spatial Eng</span>
-              </div>
-            </div>
           </div>
 
           <!-- 04 -->
@@ -651,14 +620,6 @@
               <h3 class="tc-title">미디어아트 · 오디오비주얼 &amp; 설치 예술</h3>
               <p class="tc-desc">빛, 소리, 공간, 데이터를 조형 언어로 승화시키는 실험적 인스톨레이션과 라이브 퍼포먼스를 탐구합니다.</p>
             </div>
-            <div class="tc-foot">
-              <span class="tc-foot-label">Key Roles</span>
-              <div class="tc-tags">
-                <span>New Media Artist</span>
-                <span>Audio-Visual</span>
-                <span>Installation Lead</span>
-              </div>
-            </div>
           </div>
 
           <!-- 05 -->
@@ -673,14 +634,6 @@
             <div class="tc-body">
               <h3 class="tc-title">디지털아트 스타트업 창업 &amp; 융합 연구</h3>
               <p class="tc-desc">기술과 예술의 경계에서 새로운 형태의 비즈니스 모델을 구축하고 미래 예술 교육을 선도합니다.</p>
-            </div>
-            <div class="tc-foot">
-              <span class="tc-foot-label">Key Roles</span>
-              <div class="tc-tags">
-                <span>ArtTech Founder</span>
-                <span>R&amp;D Researcher</span>
-                <span>Future Educator</span>
-              </div>
             </div>
           </div>
         </div>
